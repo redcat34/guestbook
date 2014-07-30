@@ -5,14 +5,11 @@
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <html>
     <head>
         <link type="text/css" rel="stylesheet" href="/stylesheets/main.css"/>
     </head>
-
     <body>
-
 <%
     String guestbookName = request.getParameter("guestbookName");
     if (guestbookName == null) {
@@ -24,7 +21,6 @@
     if (user != null) {
         pageContext.setAttribute("user", user);
 %>
-
 <p>Hello, ${fn:escapeXml(user.nickname)}! (You can
     <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
 <%
@@ -36,12 +32,9 @@
 <%
     }
 %>
-
-
     <form action="/guestbook.jsp" method="get">
         <div><input type="text" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/></div>
         <div><input type="submit" value="Switch Guestbook"/></div>
     </form>
-
     </body>
 </html>
